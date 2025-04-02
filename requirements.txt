@@ -1,3 +1,5 @@
 torch>=2.6.0
 numpy>=2.0.2
 ripser>=0.6.12
+sphinx
+sphinx-rtd-theme
