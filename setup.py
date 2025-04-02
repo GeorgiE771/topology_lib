@@ -11,11 +11,11 @@ setup(
     url="https://github.com/GeorgiE771/topology_lib",
     packages=find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.11.11',
+    python_requires='>=3.11',
     install_requires=[
         'torch>=2.6.0',
         'ripser>=0.6.12',
