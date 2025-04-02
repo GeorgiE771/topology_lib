@@ -17,8 +17,8 @@ setup(
     ],
     python_requires='>=3.11.11',
     install_requires=[
-        "torch",
-        "ripser",
-        "numpy"
+        'torch>=2.6.0',
+        'ripser>=0.6.12',
+        'numpy>=2.0.2'
     ],
 )
