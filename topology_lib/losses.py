@@ -22,7 +22,7 @@ def topological_preservation_loss(latent_data: torch.Tensor,
     data_np = latent_data.detach().cpu().numpy()
 
     # Вычисляем диаграммы устойчивой гомологии
-    dgms = ripser(data_np)['dgms']
+    dgms = ripser(data_np, maxdim=homology_dim)['dgms']
 
     # Извлекаем диаграмму для интересующей размерности
     if homology_dim < len(dgms):
