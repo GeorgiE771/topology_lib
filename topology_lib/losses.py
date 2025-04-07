@@ -18,12 +18,16 @@ def topological_preservation_loss(latent_data: torch.Tensor,
       - homology_dim:  размерность гомологии (как правило 1, если хотим 1D-дыры).
       - weight:  вес добавки. Итоговый вклад = -1 * weight * sum_of_lifetimes.
     """
+    # Проверка размерности входных данных
+    if len(latent_data.shape) != 2:
+        raise ValueError("Input data must be a 2D tensor of shape (N, d).")
     # Переводим в NumPy (ripser работает с NumPy-массивами)
-    data_np = latent_data.detach().cpu().numpy()
-
-    # Вычисляем диаграммы устойчивой гомологии
-    dgms = ripser(data_np, maxdim=homology_dim)['dgms']
-
+    data_np = latent_data.detach().numpy()
+    try:
+        # Вычисление диаграмм устойчивости
+        dgms = ripser(data_np, maxdim=homology_dim)['dgms']
+    except Exception as e:
+        raise RuntimeError("Failed to compute persistence diagrams.") from e
     # Извлекаем диаграмму для интересующей размерности
     if homology_dim < len(dgms):
         dgm_dim = dgms[homology_dim]
